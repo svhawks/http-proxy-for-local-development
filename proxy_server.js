@@ -6,7 +6,11 @@ var router = {
     'localmovielala.com': 'http://127.0.0.1:3000',
     'api.localmovielala.com': 'http://127.0.0.1:4000',
     'embed.localmovielala.com': 'http://127.0.0.1:5000',
-    'embedadmin.localmovielala.com': 'http://127.0.0.1:5001'
+    'embedadmin.localmovielala.com': 'http://127.0.0.1:5001',
+    'movielala.com': 'http://127.0.0.1:3000',
+    'api.movielala.com': 'http://127.0.0.1:4000',
+    'embed.movielala.com': 'http://127.0.0.1:5000',
+    'embedadmin.movielala.com': 'http://127.0.0.1:5001'
 };
 
 //
