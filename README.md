@@ -15,13 +15,15 @@ Use gasmask to set host file:
 
 Run ruby servers in these ports
 
-        'localmovielala.com': '127.0.0.1:3000',
-        'api.localmovielala.com': '127.0.0.1:4000',
-        'embed.localmovielala.com': '127.0.0.1:5000',
-        'embedadmin.localmovielala.com': '127.0.0.1:5001'
+'localmovielala.com': '127.0.0.1:3000',
+'api.localmovielala.com': '127.0.0.1:4000',
+'embed.localmovielala.com': '127.0.0.1:5000',
+'embedadmin.localmovielala.com': '127.0.0.1:5001'
 
-Then Run:
+Then Run
+```
 sudo node .development_proxy/proxy_server.js
+```
 
 To update:
 ```
