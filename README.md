@@ -22,3 +22,12 @@ Run ruby servers in these ports
 
 Then Run:
 sudo node .development_proxy/proxy.js
+
+To update:
+```
+cd .development_proxy/; wget https://github.com/movielala/http-proxy-for-local-development/archive/master.zip ; tar --strip-components=1 -zxf master.zip ; rm master.zip
+```
+
+
+
+ 
