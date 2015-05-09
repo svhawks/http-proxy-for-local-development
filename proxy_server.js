@@ -39,5 +39,5 @@ var server = http.createServer(function(req, res) {
     proxy.web(req, res, options);
 });
 
-console.log("listening on port 80")
+console.log("listening on port 80");
 server.listen(80);
