@@ -21,7 +21,7 @@ Run ruby servers in these ports
         'embedadmin.localmovielala.com': '127.0.0.1:5001'
 
 Then Run:
-sudo node .development_proxy/proxy.js
+sudo node .development_proxy/proxy_server.js
 
 To update:
 ```
