@@ -27,7 +27,8 @@ sudo node .development_proxy/proxy_server.js
 
 To update:
 ```
-cd .development_proxy/; wget https://github.com/movielala/http-proxy-for-local-development/archive/master.zip ; tar --strip-components=1 -zxf master.zip ; rm master.zip ; cd ..
+cd .development/proxy_server/; wget https://github.com/movielala/http-proxy-for-local-development/archive/master.zip ; tar --strip-components=1 -zxf master.zip ; rm master.zip ; cd .. ; cd ..
+
 ```
 
 
