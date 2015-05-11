@@ -1,5 +1,9 @@
 # http-proxy-for-local-development
 
+Create SSL
+https://devcenter.heroku.com/articles/ssl-certificate-self
+
+
 http://blog.nodejitsu.com/http-proxy-intro/
 
 Install
