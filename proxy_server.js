@@ -1,43 +1,42 @@
+var fs = require('fs');
+var path = require('path');
+var https = require('https');
 
-//
-// Just set up your options...
-//
-var router = {
-    'localmovielala.com': 'http://127.0.0.1:3000',
-    'api.localmovielala.com': 'http://127.0.0.1:4000',
-    'embed.localmovielala.com': 'http://127.0.0.1:5000',
-    'embedadmin.localmovielala.com': 'http://127.0.0.1:5001',
-    'movielala.com': 'http://127.0.0.1:3000',
-    'api.movielala.com': 'http://127.0.0.1:4000',
-    'embed.movielala.com': 'http://127.0.0.1:5000',
-    'embedadmin.movielala.com': 'http://127.0.0.1:5001'
+var httpProxy = require('http-proxy');
+var _ = require('lodash');
+
+var defaultTarget = {
+  host: '127.0.0.1',
+  port: 3000
 };
 
-//
-// ...and then pass them in when you create your proxy.
-//
-var http = require('http'),
-    httpProxy = require('http-proxy');
+var customTargets = {
+  'localmovielala.com':               {port: 3000},
+  'api.localmovielala.com':           {port: 4000},
+  'embed.localmovielala.com':         {port: 5000},
+  'embedadmin.localmovielala.com':    {port: 5001},
+  'movielala.com':                    {port: 3000},
+  'api.movielala.com':                {port: 4000},
+  'embed.movielala.com':              {port: 5000},
+  'embedadmin.movielala.com':         {port: 5001}
+};
 
-//
-// Create a proxy server with custom application logic
-//
+var options = {
+  key: fs.readFileSync(path.resolve(__dirname, './localmovielala.com.key'), 'utf-8'),
+  cert: fs.readFileSync(path.resolve(__dirname, './localmovielala.com.cert'), 'utf-8')
+};
+
 var proxy = httpProxy.createProxyServer({});
 
-//
-// Create your custom server and just call `proxy.web()` to proxy
-// a web request to the target passed in the options
-// also you can use `proxy.ws()` to proxy a websockets request
-//
-var server = http.createServer(function(req, res) {
-    // You can define here your custom logic to handle the request
-    // and then proxy the request.
-    console.log('Directing ' + req.headers.host + req.url + ' -> ' + router[req.headers.host] + req.url);
+https.createServer(options, function (req, res) {
+  
+  var target = _.assign({},
+    defaultTarget,
+    customTargets[req.headers.host] || {}
+  );
 
-    options = { target: router[req.headers.host] };
+  proxy.web(req, res, {
+    target: target
+  });
 
-    proxy.web(req, res, options);
-});
-
-console.log("listening on port 80");
-server.listen(80);
+}).listen(443);
