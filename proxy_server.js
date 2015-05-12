@@ -39,8 +39,8 @@ var httpsOptions = {
   Helpers
 */
 
-var requestListener = function requestListener(req, res) {
-  
+var requestForwarder = function requestForwarder(req, res) {
+
   var target = _.assign({},
     defaultTarget,
     customTargets[req.headers.host] || {}
@@ -50,7 +50,36 @@ var requestListener = function requestListener(req, res) {
     target: target
   });
 
-}
+};
+
+var requestRedirector = function requestRedirector(protocol, req, res) {
+
+  if (!customTargets[req.headers.host]) {
+    return requestForwarder(req, res);
+  }
+
+  var url = protocol + '://' + req.headers.host + req.url
+
+  res.writeHead(302, {
+    'Location': url
+  });
+
+  res.end('Redirecting you to "' + url + '"...');
+
+};
+
+var requestListener = function requestListener(req, res) {
+
+  var target = _.assign({},
+    defaultTarget,
+    customTargets[req.headers.host] || {}
+  );
+
+  proxyServer.web(req, res, {
+    target: target
+  });
+
+};
 
 var onError = function onError(source, err) {
 
@@ -76,7 +105,7 @@ var proxyServer = httpProxy.createProxyServer({})
   HTTPS Server
 */
 
-https.createServer(httpsOptions, requestListener)
+https.createServer(httpsOptions, requestForwarder)
   .on('listening', _.bind(onListening, null, 'https'))
   .on('error', _.bind(onError, null, 'https'))
   .listen(443);
@@ -85,7 +114,7 @@ https.createServer(httpsOptions, requestListener)
   HTTP Server
 */
 
-http.createServer(requestListener)
+http.createServer(_.bind(requestRedirector, null, 'https'))
   .on('listening', _.bind(onListening, null, 'http'))
   .on('error', _.bind(onError, null, 'http'))
   .listen(80);
