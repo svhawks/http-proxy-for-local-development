@@ -26,7 +26,7 @@ Run ruby servers in these ports
 
 Then Run
 ```
-sudo node .development_proxy/proxy_server.js
+sudo node .development/proxy_server/proxy_server.js
 ```
 
 To update:
