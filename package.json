@@ -4,7 +4,8 @@
   "description": "Create SSL\r https://devcenter.heroku.com/articles/ssl-certificate-self",
   "main": "proxy_server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node proxy_server.js"
   },
   "repository": {
     "type": "git",
