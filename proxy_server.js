@@ -52,10 +52,16 @@ var requestListener = function requestListener(req, res) {
 
 }
 
-var errorReporter = function errorReporter(thrower, err) {
+var onError = function onError(source, err) {
 
-  console.log('Error in ' + thrower);
+  console.log('Error in "' + source + '"');
   console.log(err);
+
+};
+
+var onListening = function onListening(source) {
+
+  console.log('"' + source + '" is listening...');
 
 };
 
@@ -64,20 +70,22 @@ var errorReporter = function errorReporter(thrower, err) {
 */
 
 var proxyServer = httpProxy.createProxyServer({})
-  .on('error', _.bind(errorReporter, null, 'proxy'));
+  .on('error', _.bind(onError, null, 'proxy'));
 
 /*
   HTTPS Server
 */
 
 https.createServer(httpsOptions, requestListener)
-  .listen(443)
-  .on('error', _.bind(errorReporter, null, 'https'));
+  .on('listening', _.bind(onListening, null, 'https'))
+  .on('error', _.bind(onError, null, 'https'))
+  .listen(443);
 
 /*
   HTTP Server
 */
 
 http.createServer(requestListener)
-  .listen(443)
-  .on('error', _.bind(errorReporter, null, 'http'));
+  .on('listening', _.bind(onListening, null, 'http'))
+  .on('error', _.bind(onError, null, 'http'))
+  .listen(443);
