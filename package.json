@@ -1,0 +1,23 @@
+{
+  "name": "http-proxy-for-local-development",
+  "version": "1.0.0",
+  "description": "Create SSL\r https://devcenter.heroku.com/articles/ssl-certificate-self",
+  "main": "proxy_server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/movielala/http-proxy-for-local-development.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/movielala/http-proxy-for-local-development/issues"
+  },
+  "homepage": "https://github.com/movielala/http-proxy-for-local-development",
+  "dependencies": {
+    "http-proxy": "^1.11.1",
+    "lodash": "^3.8.0"
+  }
+}
