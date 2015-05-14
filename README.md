@@ -27,6 +27,12 @@ Run ruby servers in these ports
 'embedadmin.localmovielala.com': '127.0.0.1:5001'
 ````
 
+To Setup
+```
+cd .development/proxy_server/; wget https://github.com/movielala/http-proxy-for-local-development/archive/master.zip ; tar --strip-components=1 -zxf master.zip ; rm master.zip ; cd .. ; cd ..
+```
+
+
 Then Run
 ```
 sudo node .development/proxy_server/proxy_server.js
