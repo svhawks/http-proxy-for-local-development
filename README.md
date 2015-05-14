@@ -29,18 +29,18 @@ Run ruby servers in these ports
 
 To Setup
 ```
-cd .development/proxy_server/; wget https://github.com/movielala/http-proxy-for-local-development/archive/master.zip ; tar --strip-components=1 -zxf master.zip ; rm master.zip ; cd .. ; cd ..
+mkdir -p ~/.development/proxy_server/; cd ~/.development/proxy_server/; wget https://github.com/movielala/http-proxy-for-local-development/archive/master.zip ; tar --strip-components=1 -zxf master.zip ; rm master.zip ; cd .. ; cd ..
 ```
 
 
 Then Run
 ```
-sudo node .development/proxy_server/proxy_server.js
+sudo node ~/.development/proxy_server/proxy_server.js
 ```
 
 To update:
 ```
-cd .development/proxy_server/; wget https://github.com/movielala/http-proxy-for-local-development/archive/master.zip ; tar --strip-components=1 -zxf master.zip ; rm master.zip ; cd .. ; cd ..
+cd ~/.development/proxy_server/; wget https://github.com/movielala/http-proxy-for-local-development/archive/master.zip ; tar --strip-components=1 -zxf master.zip ; rm master.zip ; cd .. ; cd ..
 
 ```
 
