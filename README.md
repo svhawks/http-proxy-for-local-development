@@ -9,7 +9,7 @@ http://blog.nodejitsu.com/http-proxy-intro/
 Install
 https://github.com/nodejitsu/node-http-proxy
 
-Use gasmask to set host file:
+Use gasmask app to set host file:
 
 ````
 127.0.0.1       localmovielala.com
