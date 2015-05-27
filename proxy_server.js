@@ -22,11 +22,10 @@ var customTargets = {
   'localmovielala.com':               {port: 3000},
   'api.localmovielala.com':           {port: 4000},
   'embed.localmovielala.com':         {port: 5000},
-  'embedadmin.localmovielala.com':    {port: 5001},
+  'partners.localmovielala.com':      {port: 5001},
   'movielala.com':                    {port: 3000},
   'api.movielala.com':                {port: 4000},
   'embed.movielala.com':              {port: 5000},
-  'embedadmin.movielala.com':         {port: 5001}
 };
 
 // SSL key and certificates for HTTPS
